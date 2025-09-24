@@ -36,6 +36,8 @@ The SciGram dataset creation follows these steps:
 ```
 git clone https://github.com/anonymous-sciclaims/scigram.git
 cd scigram
+conda create -n scigram python==3.11.0
+conda activate scigram
 pip install -r requirements.txt
 ```
 
@@ -45,8 +47,15 @@ To re-create the dataset:
 
 1. TERMINOLOGY EXTRACTION
 ```
-python terminology_extraction/generate_tqa_metadata.py
-python terminology_extraction/extract_tqa_vocab.py
+sh data/download_tqa.sh
+sh data/download_bnc.sh
+python terminology_extraction/tqa_frequencies.py --tqa_path data/tqa_train_val_test --output_path data/term_extraction/tqa_frequencies.json
+python terminology_extraction/bnc_frequencies.py --bnc_path data/term_extraction/BNC/Texts/ --output_path data/term_extraction/bnc_frequencies.json
+python terminology_extraction/generate_tqa_metadata.py --tqa_path data/tqa_train_val_test --output_path data/term_extraction/tqa_metadata.json --bnc_freqs_path data/term_extraction/bnc_frequencies.json --tqa_freqs_path data/term_extraction/tqa_frequencies.json --stopwords_path data/term_extraction/more_stopwords.json
+python terminology_extraction/extract_tqa_vocab.py --metadata_path data/term_extraction/tqa_metadata.json --output_path data/term_extraction/tqa_vocab.json
+python terminology_extraction/get_tqa_sentences.py --metadata_path data/term_extraction/tqa_metadata.json --output_path data/term_extraction/tqa_sentences.jsonl
+python terminology_extraction/terminology_wise_sentences.py --vocab_path data/term_extraction/tqa_vocab.json --sentence_path data/term_extraction/tqa_sentences.jsonl --output_path data/term_extraction/tqa_sentences_with_terms.jsonl
+
 ```
 2. SCIENTIFIC CLAIM GENERATION
 ```
