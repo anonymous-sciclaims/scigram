@@ -59,9 +59,9 @@ python terminology_extraction/terminology_wise_sentences.py --vocab_path data/te
 ```
 2. SCIENTIFIC CLAIM GENERATION
 ```
-python scientific_claim_gen/generate_prompts.py
-python scientific_claim_gen/get_claims.py
-python scientific_claim_gen/clean_claims.py
+python scientific_claim_gen/generate_prompts.py --input_path data/term_extraction/tqa_sentences.jsonl --output_path data/claim_gen/claim_prompts.jsonl --hf_token <your huggingface token>
+python scientific_claim_gen/get_claims.py --input_path data/claim_gen/claim_prompts.jsonl --output_dir data/claim_gen/ --hf_token <your huggingface token>
+python scientific_claim_gen/clean_claims.py --input_dir data/claim_gen/claims/ --output_path data/claim_gen/claims.jsonl
 ```
 3. DIAGRAM RETRIEVAL
 ```
