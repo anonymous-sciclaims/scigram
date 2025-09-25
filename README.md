@@ -70,18 +70,22 @@ python diagram_retrieval/clean_urls.py --input_path data/claim_gen/urls/urls_par
 ```
 4. CAPTION SYNTHESIS
 ```
-python scigram_construction/generate_captions.py --input_path scigram_base.jsonl --output_path data/scigram_alignment.json
+python scigram_construction/generate_captions.py --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part1.json
+python scigram_construction/generate_captions.py --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part2.json
+python scigram_construction/generate_captions.py --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part3.json
+python scigram_construction/merge_alignments.py
 ```
 5. MULTIPLE-CHOICE QUESTION SYNTHESIS
 ```
-python scigram_construction/generate_mcqa.py --input_path scigram_base.jsonl --output_path data/scigram_vit.json
+python scigram_construction/generate_mcqa.py --input_path scigram_base.jsonl --output_path data/scigram_vit/scigram_vit_unbalanced.json
+python scigram_construction/balance_mcqa.py --input_path data/scigram_vit/scigram_vit_unbalanced.json --output_path data/scigram_vit/scigram_vit.json
 ```
 7. CURATED DATASETS COLLECTION
 ```
 sh data/download_ai2d.sh
 python scigram_construction/process_ai2d.py
 python scigram_construction/process_science_qa_full.py
-python scigram_construction/generate_m3_balanced.py --ai2d_path data/ai2d/train_fix.jsonl --ai2d_path data/ai2d/train_full.jsonl --tqa_path tqa_train_test_val/tqa_v1_train.json --output_path data/scigram_m3.json
+python scigram_construction/generate_m3_balanced.py --ai2d_path data/ai2d/train_fix.jsonl --ai2d_path data/ai2d/train_full.jsonl --tqa_path tqa_train_test_val/tqa_v1_train.json --output_path data/scigram_m3/scigram_m3.json
 ```
 
 
