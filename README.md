@@ -61,26 +61,27 @@ python terminology_extraction/terminology_wise_sentences.py --vocab_path data/te
 ```
 python scientific_claim_gen/generate_prompts.py --input_path data/term_extraction/tqa_sentences.jsonl --output_path data/claim_gen/claim_prompts.jsonl --hf_token <your huggingface token>
 python scientific_claim_gen/get_claims.py --input_path data/claim_gen/claim_prompts.jsonl --output_dir data/claim_gen/ --hf_token <your huggingface token>
-python scientific_claim_gen/clean_claims.py --input_dir data/claim_gen/claims/ --output_dir data/claim_gen/clean_claims/
+python scientific_claim_gen/clean_claims.py --input_path data/claim_gen/claims/claims_part<n>.jsonl --output_path data/claim_gen/claims/claims_clean_part<n>.jsonl
 ```
 3. DIAGRAM RETRIEVAL
 ```
-python diagram_retrieval/add_urls.py
-python diagram_retrieval/clean_urls.py
+python diagram_retrieval/add_urls.py --input_path data/claim_gen/claims/claims_part<n>.jsonl --output_path data/urls/urls_part<n>.jsonl
+python diagram_retrieval/clean_urls.py --input_path data/claim_gen/urls/urls_part<n>.jsonl --output_path data/urls/urls_clean_part<n>.jsonl
 ```
 4. CAPTION SYNTHESIS
 ```
-python scigram_construction/generate_captions.py
+python scigram_construction/generate_captions.py --input_path scigram_base.jsonl --output_path data/scigram_alignment.json
 ```
 5. MULTIPLE-CHOICE QUESTION SYNTHESIS
 ```
-python scigram_construction/generate_mcqa.py
+python scigram_construction/generate_mcqa.py --input_path scigram_base.jsonl --output_path data/scigram_vit.json
 ```
 7. CURATED DATASETS COLLECTION
 ```
+sh data/download_ai2d.sh
 python scigram_construction/process_ai2d.py
 python scigram_construction/process_science_qa_full.py
-python scigram_construction/generate_m3_balanced.py
+python scigram_construction/generate_m3_balanced.py --ai2d_path data/ai2d/train_fix.jsonl --ai2d_path data/ai2d/train_full.jsonl --tqa_path tqa_train_test_val/tqa_v1_train.json --output_path data/scigram_m3.json
 ```
 
 
