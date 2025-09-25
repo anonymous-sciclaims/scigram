@@ -1,0 +1,8 @@
+srsly~=2.5.1
+nltk~=3.9.1
+flair~=0.15.1
+transformers~=4.56.2
+tqdm~=4.67.1
+numpy~=2.3.3
+torch~=2.8.0
+textdistance~=4.6.3
