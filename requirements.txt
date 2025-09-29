@@ -6,3 +6,5 @@ tqdm~=4.67.1
 numpy~=2.3.3
 torch~=2.8.0
 textdistance~=4.6.3
+datasets~=4.1.1
+pillow~=11.3.0
