@@ -73,7 +73,6 @@ python diagram_retrieval/clean_urls.py --input_path data/claim_gen/urls/urls_par
 python scigram_construction/generate_captions.py --image_dir_path data/ --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part1.json
 python scigram_construction/generate_captions.py --image_dir_path data/ --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part2.json
 python scigram_construction/generate_captions.py --image_dir_path data/ --input_path scigram_base.jsonl --output_path data/scigram_alignment/scigram_alignment_part3.json
-python scigram_construction/merge_alignments.py
 ```
 5. MULTIPLE-CHOICE QUESTION SYNTHESIS
 ```
