@@ -1,7 +1,7 @@
-# SciGram: A Large-Scale Dataset for Scientific Diagram Understanding
+# From Terminology to Diagrams: Visual-Instruction Generation for Scientific Diagram Understanding
 
 This repository contains the official code accompanying the paper:
-"SciGram: A Large-Scale Dataset for Scientific Diagram Understanding"
+"From Terminology to Diagrams: Visual-Instruction Generation for Scientific Diagram Understanding"
 
 Our goal is to facilitate research on the automatic understanding of scientific diagrams by providing the tools necessary to reconstruct the SciGram dataset from publicly available sources.
 
@@ -10,7 +10,7 @@ Our goal is to facilitate research on the automatic understanding of scientific 
 
 Dataset Purpose: Enable research on diagram understanding, and scientific knowledge extraction.
 
-Repository Goal: Provide scripts and instructions to recreate SciGram using linked resources.
+Repository Goal: Provide scripts and instructions to recreate the SciGram dataset using linked resources.
 
 **Disclaimer: We do not redistribute copyrighted images. Instead, we provide links and metadata.**
 
